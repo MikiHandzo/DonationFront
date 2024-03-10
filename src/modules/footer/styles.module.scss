@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  border-top: 1px solid #E4EAF4;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1080px;
+
+    .social {
+      display: flex;
+
+      .item + .item {
+        margin: 0 0 0 16px;
+      }
+    }
+  }
+}

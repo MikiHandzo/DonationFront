@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 100%;
+  background: #ffffff;
+  padding: 0 15px;
+  box-shadow: rgba(223, 228, 249, 0.50) 0 4px 10px 0;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1080px;
+  }
+}

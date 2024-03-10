@@ -1,0 +1,36 @@
+@import '@/app/constants';
+
+.tabs {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: #F1F3F8;
+  border-radius: 6px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+    color: $main-text-bold;
+
+    &:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+
+    &:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+  }
+
+  .active {
+    color: #ffffff;
+    background: $accent;
+  }
+}

@@ -1,0 +1,25 @@
+.input {
+  display: flex;
+  position: relative;
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #E2E7F0;
+    color: #8F9BAB;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 22px;
+    outline: none;
+  }
+
+  .units {
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    color: #8F9BAB;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 22px;
+  }
+}
