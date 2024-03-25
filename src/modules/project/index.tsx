@@ -5,6 +5,8 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Tabs from "@/UI/tabs";
 import {useState} from "react";
+import {useQuery} from "react-query";
+import {Api} from "@/api";
 
 export default function Project() {
     const [tabs, setTabs] = useState<Array<{name:string, id: string | number, active: boolean}>>([
@@ -12,6 +14,12 @@ export default function Project() {
         {name: 'Звіти', id: 'reports', active: false},
         {name: 'Документи', id: 'documents', active: false},
     ])
+
+    useQuery(['test'], () => Api.test({test: 'test'}), {
+        onSuccess: ({data}) => {
+           console.log(312)
+        },
+    })
 
     return (
         <div className={styles.content}>

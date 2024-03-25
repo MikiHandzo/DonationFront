@@ -1,32 +1,38 @@
-'use client'
-
 import {truncateWithEllipsis} from "@/helper";
-import Button from "@/UI/button";
+import LinkButton from "@/UI/LinkButton";
 import styles from "./styles.module.scss";
 
-export default function ProjectItem() {
+interface Props {
+    title: string
+    description: string
+    imgUrl: string
+    id: number
+}
+
+export default function ProjectItem({title, description, imgUrl, id}: Props) {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL
+    const protocol = process.env.NEXT_PUBLIC_PROTOCOL
+
     return (
         <div className={styles.projectItem}>
             <div className={styles.projectPreview}>
-                <img src="/images/imagePreview.jpg" alt="imagePreview"/>
+                <img src={`${protocol}://${baseUrl}${imgUrl}`} alt="imagePreview"/>
             </div>
 
             <div className={styles.description}>
                 <div>
-                    <h2>Збір на дрони</h2>
+                    <h2>{title}</h2>
 
                     <p>
-                        {truncateWithEllipsis(
-                            'Ми збираємо 10 мільйонів гривень на розвідні та бойові дрони для 23 ОМБр, яка потребує рекордної кількості дронів та їх комплектуючих (комплексів) для аеророзвідки. У червні, підрозділ аеророзвідки спільно з 110 бригадою ТрО звільнив населений пункт Новодарівка на Запоріжжі. А в липні група аеророзвідки також виявила та допомогла знищити позиції окупантів у Приютному Запорізької області.'
-                        )}
+                        {truncateWithEllipsis(description)}
                     </p>
                 </div>
 
-                <Button
-                    onClick={() => window.location.href = `/project/test`}
+                <LinkButton
+                    href={`/project/${id}`}
                 >
                     Підтримати
-                </Button>
+                </LinkButton>
             </div>
         </div>
     )
