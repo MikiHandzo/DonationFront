@@ -10,4 +10,13 @@ export const Api = {
                 return {data: error.response}
             })
     },
+
+    async companyInfo(params: {id: number}) {
+        return axios.get(`${protocol}://${baseUrl}/api/company/${params.id}`)
+            .then(function (response) {
+                return response.data
+            }).catch((error) => {
+                return {data: error.response}
+            })
+    },
 }

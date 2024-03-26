@@ -1,13 +1,13 @@
 import Header from "@/modules/header";
 import Footer from "@/modules/footer";
-import Project from "@/modules/project";
+import Company from "../../../modules/company";
 import styles from "./styles.module.scss";
 
-export default function ProjectPage() {
+export default function CompanyPage({ params }: { params: { slug: string } }) {
     return (
         <div className={styles.wrapper}>
             <Header />
-            <Project />
+            <Company id={params.slug}/>
             <Footer />
         </div>
     )

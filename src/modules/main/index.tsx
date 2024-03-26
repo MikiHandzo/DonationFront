@@ -1,13 +1,13 @@
-import ProjectItem from "./components/projectItem";
+import CompanyItem from "./components/companyItem";
 import {Api} from "@/api";
 import {companyList} from "@/types";
 import styles from './styles.module.scss'
 export default async function Main() {
     let companyList = []
     companyList = await Api.companyList()
-    const renderProjectsList = companyList.data?.map((item: companyList) => {
+    const renderCompanysList = companyList.data?.map((item: companyList) => {
         return (
-            <ProjectItem
+            <CompanyItem
                 key={item.id}
                 title={item.title}
                 description={item.description}
@@ -19,7 +19,7 @@ export default async function Main() {
 
     return (
         <div className={styles.wrapper}>
-            {renderProjectsList}
+            {renderCompanysList}
         </div>
     )
 }

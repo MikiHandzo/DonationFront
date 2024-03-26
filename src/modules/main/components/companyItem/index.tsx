@@ -9,13 +9,13 @@ interface Props {
     id: number
 }
 
-export default function ProjectItem({title, description, imgUrl, id}: Props) {
+export default function CompanyItem({title, description, imgUrl, id}: Props) {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL
     const protocol = process.env.NEXT_PUBLIC_PROTOCOL
 
     return (
-        <div className={styles.projectItem}>
-            <div className={styles.projectPreview}>
+        <div className={styles.companyItem}>
+            <div className={styles.companyPreview}>
                 <img src={`${protocol}://${baseUrl}${imgUrl}`} alt="imagePreview"/>
             </div>
 
@@ -29,7 +29,7 @@ export default function ProjectItem({title, description, imgUrl, id}: Props) {
                 </div>
 
                 <LinkButton
-                    href={`/project/${id}`}
+                    href={`/company/${id}`}
                 >
                     Підтримати
                 </LinkButton>

@@ -1,11 +1,11 @@
 @import '@/app/constants';
 
-.projectItem {
+.companyItem {
   display: flex;
   margin: 0 0 120px 0;
   min-height: 300px;
 
-  .projectPreview {
+  .companyPreview {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -42,7 +42,7 @@
   @media (max-width: 900px) {
     flex-direction: column;
 
-    .projectPreview {
+    .companyPreview {
       width: 100%;
       margin: 0 0 30px 0;
     }

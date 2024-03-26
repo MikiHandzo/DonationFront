@@ -12,3 +12,13 @@ export interface companyList {
     news: any,
     images: any,
 }
+
+export interface CompanyImages {
+    id: number,
+    name: string,
+    description: string,
+    mime_type: string,
+    type: string,
+    path: string,
+
+}
