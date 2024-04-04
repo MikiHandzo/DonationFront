@@ -6,10 +6,34 @@ import Input from "@/UI/input";
 import Radio from "@/UI/radio";
 import Checkbox from "@/UI/checkbox";
 import styles from './styles.module.scss'
+import {Api} from "@/api";
+import {useMutation, useQuery} from "react-query";
 export default function Donation() {
     const [totalPayment, setTotalPayment] = useState(0)
     const [payment, setPayment] = useState('')
     const [tax, setTax] = useState(true)
+    const [paymentId, setPaymentId] = useState('')
+
+    const donationCreate = useMutation('donation create', () =>
+        Api.donationCreate({id: 2, contribution:+payment, support:2}), {
+            onSuccess: ({data}) => {
+                setPaymentId(data.id)
+                setTimeout(() => donationCharge.mutate())
+            },
+            onError:(error:any) => {
+            }
+        }
+    )
+
+    const donationCharge = useMutation('donation charge',  () =>
+        Api.donationCharge({id: paymentId}), {
+            onSuccess: ({data}) => {
+                window.open(data.forward_url || '')
+            },
+            onError:(error:any) => {
+            },
+        }
+    )
 
     return (
         <div className={styles.wrapper}>
@@ -57,7 +81,9 @@ export default function Donation() {
                     <span className={styles.totalPayment}>{tax ? (((+payment / 100) * 2) + +payment): +payment} ₴</span>
                 </div>
 
-                <Button>Задонатити</Button>
+                <Button onClick={() => {
+                    donationCreate.mutate()
+                }}>Задонатити</Button>
             </footer>
         </div>
     )

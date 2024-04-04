@@ -1,21 +1,23 @@
+import React from "react";
 import {Api} from "@/api";
-import Image from "next/image";
 import DonationProgressBar from "./components/donationProgressBar";
 import Donation from "./components/donation";
 import CompanyTabs from "@/modules/company/components/companyTabs";
+import Carousel from "@/UI/carousel";
+import SocialShare from "@/modules/company/components/socialShare";
 import styles from "./styles.module.scss";
 interface Props {
     id: string
 }
+
 export default async function Company({id}: Props) {
-    let companyInfo = null
-    companyInfo = await Api.companyInfo({id: +id})
+    let companyInfo = await Api.companyInfo({id: +id})
 
     return (
         <div className={styles.content}>
             <div className={styles.mainContentWrapper}>
                 <div className={styles.companyPreview}>
-                    <img src="/images/imagePreview.jpg" alt="imagePreview"/>
+                   <Carousel items={companyInfo.images}/>
                 </div>
 
                 <div className={styles.donation}>
@@ -32,19 +34,7 @@ export default async function Company({id}: Props) {
 
                 <h2>Поділитися збором</h2>
 
-                <div className={styles.share}>
-                    <a href='#' className={styles.item}>
-                        <Image src='/icons/gmail.svg' alt='gmail' width={30} height={30}/>
-                    </a>
-
-                    <a  href='#' className={styles.item}>
-                        <Image src='/icons/facebook.svg' alt='facebook' width={30} height={30}/>
-                    </a>
-
-                    <a href='#' className={styles.item}>
-                        <Image src='/icons/telegram.svg' alt='telegram' width={30} height={30}/>
-                    </a>
-                </div>
+                <SocialShare />
 
                 <CompanyTabs
                     images={companyInfo.images}

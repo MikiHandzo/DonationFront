@@ -1,10 +1,10 @@
 'use client'
 
-import Tabs from "@/UI/tabs";
 import Image from "next/image";
-import styles from "./styles.module.scss";
-import {CompanyImages} from "@/types";
+import Tabs from "@/UI/tabs";
 import {useState} from "react";
+import {CompanyImages} from "@/types";
+import styles from "./styles.module.scss";
 
 interface Props {
     images: Array<CompanyImages>

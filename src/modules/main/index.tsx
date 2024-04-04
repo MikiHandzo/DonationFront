@@ -11,7 +11,7 @@ export default async function Main() {
                 key={item.id}
                 title={item.title}
                 description={item.description}
-                imgUrl={item.images[0]?.path}
+                images={item.images}
                 id={item.id}
             />
         )
