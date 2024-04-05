@@ -1,0 +1,17 @@
+.loaderWrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+
+  img {
+    position: absolute;
+    top: 40%;
+  }
+}

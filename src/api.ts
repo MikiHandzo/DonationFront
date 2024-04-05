@@ -20,7 +20,7 @@ export const Api = {
             })
     },
 
-    async donationCreate(params: {id: number, contribution:number, support:number}) {
+    async donationCreate(params: {id: number, contribution:number, support:number, returnUrl:string}) {
         return axios.post(`${protocol}://${baseUrl}/api/checkouts`, {
             locale: 'uk_UA',
             ip: "192.168.1.1",
@@ -44,7 +44,7 @@ export const Api = {
             ],
             incognito: false,
             payment_option: "CARD",
-            return_url: "https://google.com"
+            return_url: params.returnUrl
         })
             .then(function (response) {
                 return response

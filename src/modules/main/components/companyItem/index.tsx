@@ -1,9 +1,9 @@
-import {truncateWithEllipsis} from "@/helper";
-import LinkButton from "@/UI/LinkButton";
-import styles from "./styles.module.scss";
-import Carousel from "@/UI/carousel";
 import React from "react";
+import LinkButton from "@/UI/LinkButton";
+import Carousel from "@/UI/carousel";
+import {truncateWithEllipsis} from "@/helper";
 import {CompanyImages} from "@/types";
+import styles from "./styles.module.scss";
 
 interface Props {
     title: string
@@ -23,7 +23,7 @@ export default function CompanyItem({title, description, images, id}: Props) {
                 <div>
                     <h2>{title}</h2>
 
-                    <p dangerouslySetInnerHTML={{ __html: truncateWithEllipsis(description) || '' }}></p>
+                    <section dangerouslySetInnerHTML={{ __html: truncateWithEllipsis(description) || '' }}></section>
                 </div>
 
                 <LinkButton

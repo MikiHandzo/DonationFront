@@ -20,5 +20,22 @@ export interface CompanyImages {
     mime_type: string,
     type: string,
     path: string,
+}
 
+export interface CompanyDocuments {
+    id: number,
+    name: string,
+    description: string,
+    mime_type: string,
+    type: string,
+    path: string,
+}
+
+export interface CompanyReports {
+    id: number,
+    name: string,
+    description: string,
+    mime_type: string,
+    type: string,
+    path: string,
 }

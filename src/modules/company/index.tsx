@@ -23,7 +23,7 @@ export default async function Company({id}: Props) {
                 <div className={styles.donation}>
                     <DonationProgressBar target={companyInfo.target} current={11220} />
 
-                    <Donation />
+                    <Donation id={id} />
                 </div>
             </div>
 
@@ -37,7 +37,8 @@ export default async function Company({id}: Props) {
                 <SocialShare />
 
                 <CompanyTabs
-                    images={companyInfo.images}
+                    documents={companyInfo.documents}
+                    reports={companyInfo.reports}
                 />
             </div>
         </div>

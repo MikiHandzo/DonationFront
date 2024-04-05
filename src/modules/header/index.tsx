@@ -1,11 +1,15 @@
-import styles from './stlyes.module.scss'
+'use client';
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+import styles from './stlyes.module.scss'
 
 export default function Header() {
+    const { push } = useRouter();
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
-                <div className={styles.logo}>
+                <div className={styles.logo} onClick={() => push('/')}>
                     <Image src="/images/logo.svg" alt="logo" width={36} height={36}/>
                 </div>
 
