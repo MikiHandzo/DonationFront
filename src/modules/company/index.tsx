@@ -6,6 +6,7 @@ import CompanyTabs from "@/modules/company/components/companyTabs";
 import Carousel from "@/UI/carousel";
 import SocialShare from "@/modules/company/components/socialShare";
 import styles from "./styles.module.scss";
+import Loader from "@/components/loader";
 interface Props {
     id: string
 }

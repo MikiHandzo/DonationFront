@@ -28,7 +28,7 @@ export default function Donation({id}: Props) {
     const supportPay = ((+payment / 100) * 2)
 
     const donationCreate = useMutation('donation create', () =>
-        Api.donationCreate({id: +id, contribution:+payment, support:supportPay, returnUrl: `${domain}/payment-success`}), {
+        Api.donationCreate({id: +id, contribution:+payment, support:supportPay, returnUrl: `${domain}/payment-success?id=${id}`}), {
             onSuccess: ({data}) => {
                 donationCharge.mutate(data.id)
                 setLoader(true)

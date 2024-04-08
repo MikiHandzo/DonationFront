@@ -14,7 +14,7 @@ export default function EmblaCarousel({items}: Props) {
     })
     const baseUrl = process.env.NEXT_PUBLIC_API_URL
     const protocol = process.env.NEXT_PUBLIC_PROTOCOL
-    const images = items.map((item:CompanyImages) =>
+    const images = items?.map((item:CompanyImages) =>
         <div key={item.id} className={styles.embla__slide}>
             <img src={`${protocol}://${baseUrl}${item.path}`} alt="imagePreview"/>
         </div>

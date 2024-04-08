@@ -20,7 +20,7 @@ export default function CompanyTabs({documents, reports}: Props) {
         {name: 'Документи', id: 'documents', active: false},
     ])
 
-    const companyReports = reports.map((item:CompanyReports) => {
+    const companyReports = reports?.map((item:CompanyReports) => {
         return (
             <div key={item.id} className={styles.item} onClick={() => {window.open(`${protocol}://${apiUrl}:/${item.path}`, '_blank')}}>
                 <div className={styles.preview}>
@@ -36,7 +36,7 @@ export default function CompanyTabs({documents, reports}: Props) {
         )
     })
 
-    const companyDocuments = documents.map((item:CompanyDocuments) => {
+    const companyDocuments = documents?.map((item:CompanyDocuments) => {
         return (
             <div key={item.id} className={styles.item} onClick={() => {window.open(`${protocol}://${apiUrl}:/${item.path}`, '_blank')}}>
                 <div className={styles.preview}>

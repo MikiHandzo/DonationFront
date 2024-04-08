@@ -20,7 +20,7 @@ export default function DonationProgressBar({target, current}: Props) {
                     <h6>Ціль:&nbsp;</h6>
 
                     <strong>
-                        {target.toLocaleString('uk-UA')} ₴
+                        {target?.toLocaleString('uk-UA')} ₴
                     </strong>
                 </div>
             </div>
