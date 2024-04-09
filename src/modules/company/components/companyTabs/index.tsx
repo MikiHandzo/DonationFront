@@ -5,6 +5,7 @@ import Tabs from "@/UI/tabs";
 import {useState} from "react";
 import {CompanyDocuments, CompanyReports} from "@/types";
 import styles from "./styles.module.scss";
+import DonorsList from "@/modules/company/components/donorsList";
 
 interface Props {
     documents: Array<CompanyDocuments>
@@ -62,71 +63,42 @@ export default function CompanyTabs({documents, reports}: Props) {
 
             <div className={styles.tabContent}>
                 {tabs.find(tab => tab.active)?.id === 'donors' &&
-                    <div className={styles.donors}>
-                        <div className={styles.item}>
-                            <div className={styles.preview}>
-                                <Image src='/icons/heart.svg' alt='heart' width={36} height={36}/>
-                            </div>
-
-                            <div className={styles.info}>
-                                <p>Андрій Котик</p>
-
-                                <small>21.02.2024 12:14</small>
-                            </div>
-
-                            <div className={styles.sum}>
-                                1 000 ₴
-                            </div>
-                        </div>
-
-                        <div className={styles.item}>
-                            <div className={styles.preview}>
-                                <Image src='/icons/heart.svg' alt='heart' width={36} height={36}/>
-                            </div>
-
-                            <div className={styles.info}>
-                                <p>Андрій Котик</p>
-
-                                <small>21.02.2024 12:14</small>
-                            </div>
-
-                            <div className={styles.sum}>
-                                1 000 ₴
-                            </div>
-                        </div>
-
-                        <div className={styles.item}>
-                            <div className={styles.preview}>
-                                <Image src='/icons/heart.svg' alt='heart' width={36} height={36}/>
-                            </div>
-
-                            <div className={styles.info}>
-                                <p>Андрій Котик</p>
-
-                                <small>21.02.2024 12:14</small>
-                            </div>
-
-                            <div className={styles.sum}>
-                                1 000 ₴
-                            </div>
-                        </div>
-
-                        <div className={styles.item}>
-                            <div className={styles.preview}>
-                                <Image src='/icons/heart.svg' alt='heart' width={36} height={36}/>
-                            </div>
-
-                            <div className={styles.info}>
-                                <p>Андрій Котик</p>
-
-                                <small>21.02.2024 12:14</small>
-                            </div>
-
-                            <div className={styles.sum}>
-                                1 000 ₴
-                            </div>
-                        </div>
-                    </div>
+                    <DonorsList
+                        list={
+                            [
+                                {
+                                    sum: 1000,
+                                    time: '21.02.2024 12:14',
+                                    id: '1',
+                                },
+                                {
+                                    sum: 1005,
+                                    time: '21.02.2024 12:15',
+                                    id: '2',
+                                },
+                                {
+                                    sum: 1005,
+                                    time: '21.02.2024 12:15',
+                                    id: '3',
+                                },
+                                {
+                                    sum: 1005,
+                                    time: '21.02.2024 12:15',
+                                    id: '4',
+                                },
+                                {
+                                    sum: 1005,
+                                    time: '21.02.2024 12:15',
+                                    id: '5',
+                                },
+                                {
+                                    sum: 1005,
+                                    time: '21.02.2024 12:15',
+                                    id: '6',
+                                },
+                            ]
+                        }
+                    />
                 }
 
                 {tabs.find(tab => tab.active)?.id === 'reports' &&

@@ -1,5 +1,6 @@
 .embla {
     overflow: hidden;
+    position: relative;
 }
 .embla__container {
     display: flex;
@@ -8,4 +9,46 @@
 .embla__slide {
     flex: 0 0 100%;
     min-width: 0;
+}
+
+.navButtons {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    width: 100%;
+}
+.buttonNext, .buttonPrev {
+    cursor: pointer;
+}
+
+.navDots {
+    position: absolute;
+    bottom: 10%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    width: 100%;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #dddddd;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+
+    & + .dot {
+        margin: 0 0 0 10px;
+    }
+}
+
+.dotSelected {
+    background: #1568E5;
 }
