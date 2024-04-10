@@ -6,8 +6,8 @@ export const Api = {
         return axios.get(`${protocol}://${baseUrl}/api/company?categories[]=1`)
             .then(function (response) {
                 return response.data
-            }).catch((error) => {
-                return {data: error.response}
+            }).catch(() => {
+                return {data: []}
             })
     },
 

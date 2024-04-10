@@ -3,9 +3,8 @@ import {Api} from "@/api";
 import {companyList} from "@/types";
 import styles from './styles.module.scss'
 export default async function Main() {
-    let companyList = []
-    companyList = await Api.companyList()
-    const renderCompanysList = companyList.data?.map((item: companyList) => {
+    const companyListData = await Api.companyList()
+    const renderCompaniesList = companyListData.data?.map((item: companyList) => {
         return (
             <CompanyItem
                 key={item.id}
@@ -19,7 +18,7 @@ export default async function Main() {
 
     return (
         <div className={styles.wrapper}>
-            {renderCompanysList}
+            {renderCompaniesList}
         </div>
     )
 }

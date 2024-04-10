@@ -1,6 +1,5 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
 import Header from "@/modules/header";
@@ -12,8 +11,6 @@ import Loader from "@/components/loader";
 
 export default function PaymentSuccessful() {
     const router = useRouter()
-    const searchParams = useSearchParams()
-    const searchId = searchParams.get('id') || 0
     const [loader, setLoader] = useState(false)
 
     return (
@@ -34,10 +31,10 @@ export default function PaymentSuccessful() {
                 <Button
                     onClick={() => {
                         setLoader(true)
-                        searchId ? router.push(`/company/${searchId}`) : router.push('/')
+                        router.push('/')
                     }}
                 >
-                    { searchId ? 'Повернутися до сторінки збору' : 'Повернутися на головну' }
+                    Повернутися на головну
                 </Button>
             </div>
 
