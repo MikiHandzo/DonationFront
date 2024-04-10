@@ -1,0 +1,25 @@
+name: Build and push image to Gitlab registry
+
+description: |
+    This action prepares the deployment by building and pushing the docker image.
+    It is used by the deployment action.
+
+inputs:
+    docker-registry:
+        description: Docker Registry
+        required: true
+    docker-repository:
+        description: Docker Repository
+        required: true
+    docker-tag:
+        description: Docker Tag
+        required: true
+
+runs:
+    using: composite
+    steps:
+        - name: Build, tag and push image
+          shell: bash
+          run: |
+              docker build -t ${{ inputs.docker-registry }}/${{ inputs.docker-repository }}:${{ inputs.docker-tag }} .
+              docker push ${{ inputs.docker-registry }}/${{ inputs.docker-repository }}:${{ inputs.docker-tag }}

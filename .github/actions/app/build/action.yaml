@@ -1,0 +1,29 @@
+name: Build Symfony App
+
+description: |
+    This action builds the Symfony app.
+    It is used only for code checking.
+
+inputs:
+    php-version:
+        description: PHP version
+        required: false
+        default: '8.2'
+    php-xdebug-mode:
+        description: PHP Xdebug mode
+        required: false
+        default: none
+
+runs:
+    using: composite
+    steps:
+        - uses: shivammathur/setup-php@v2
+          with:
+              php-version: ${{ inputs.php-version }}
+              coverage: ${{ inputs.php-xdebug-mode }}
+        - name: Install Dependencies
+          shell: bash
+          run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        - name: Directory Permissions
+          shell: bash
+          run: mkdir var && chmod -R 777 var

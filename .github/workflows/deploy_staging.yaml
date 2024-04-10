@@ -1,0 +1,41 @@
+name: DeployStaging
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+
+run-name: Deployment to staging
+
+on:
+    pull_request_target:
+        branches:
+            - main
+        types:
+            - closed
+
+jobs:
+    Build:
+        if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        environment: staging
+        permissions:
+            id-token: write
+            contents: read
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure Gitlab Credentials and login to Gitlab
+              id: login-gitlab
+              uses: ./.github/actions/deploy/prepare
+              with:
+                  gitlab-username: ${{ secrets.GITLAB_USERNAME }}
+                  gitlab-token: ${{ secrets.GITLAB_TOKEN }}
+
+            - name: Build, tag and push image to Docker
+              id: build-image
+              uses: ./.github/actions/deploy/build
+              with:
+                  docker-registry: registry.gitlab.com/ai-trader1/drones-of-peace
+                  docker-tag: latest
+                  docker-repository: frontend
+
