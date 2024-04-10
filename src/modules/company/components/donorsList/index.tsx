@@ -1,5 +1,6 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
+import Pagination from "@/modules/company/components/pagination";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
 }
 export default function DonorsList({list}: Props) {
     const [hydrated, setHydrated] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState<Array<number>>([0, 10])
     useEffect(() => {
         setHydrated(true);
     },[])
@@ -22,41 +24,52 @@ export default function DonorsList({list}: Props) {
         'Свідомий',
         'Бавовняр',
     ]
-    const colorList = [
-        '#ff4646',
-        '#ffbc46',
-        '#46ff4d',
-        '#46fff8',
-        '#4670ff',
-        '#8346ff',
-        '#f746ff',
-        '#ff4685',
-    ]
     const randomIndexName = () => Math.floor(Math.random() * namesList.length)
-    const randomIndexColor = () => Math.floor(Math.random() * colorList.length)
-    const renderList = list.map((item) => {
-        return (
-            <div key={item.id} className={styles.item}>
-                {hydrated && <div className={styles.preview} style={{background: colorList[randomIndexColor()]}}>
-                    <Image src='/icons/heart.svg' alt='heart' width={36} height={36}/>
-                </div>}
+    const randomAvatar = () => Math.floor(Math.random() * 11)
+    const itemInPage = 10
 
-                <div className={styles.info}>
-                    {hydrated && <p>{namesList[randomIndexName()]}</p>}
+    const renderList = () => list.map((item, index) => {
+        if(index >= currentIndex[0] && index < currentIndex[1]) {
+            return (
+                <div key={item.id} className={styles.item}>
+                    {hydrated && <div className={styles.preview}>
+                        <Image src={`/icons/donationsUserList/${randomAvatar()}.svg`} alt='avatar' width={35} height={35}/>
+                    </div>}
 
-                    <small>21.02.2024 12:14</small>
+                    <div className={styles.info}>
+                        {hydrated && <p>{namesList[randomIndexName()]}</p>}
+
+                        <small>{item.time}</small>
+                    </div>
+
+                    <div className={styles.sum}>
+                        {item.sum} ₴
+                    </div>
                 </div>
-
-                <div className={styles.sum}>
-                    1 000 ₴
-                </div>
-            </div>
-        )
+            )
+        }
     })
 
     return (
         <div className={styles.donors}>
-            {renderList}
+            {list?.length ?
+                renderList()
+                :
+                <div className={styles.noDonorsMsg}>
+                    <h2>Стань першим донором!</h2>
+
+                    <p>
+                        Цей проєкт ще не встигли підтримати. Стань першим із донорів, хто допоможе зібрати необхідну
+                        суму на проєкт!
+                    </p>
+                </div>
+            }
+
+            <Pagination
+                list={list}
+                itemsInPage={10}
+                setCurrentIndex={setCurrentIndex}
+            />
         </div>
     )
 }
