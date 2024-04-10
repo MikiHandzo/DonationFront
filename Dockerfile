@@ -16,6 +16,8 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+RUN npm install sharp
+
 
 # 2. Rebuild the source code only when needed
 FROM base AS builder
@@ -49,4 +51,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD HOSTNAME=localhost node server.js
+CMD node server.js
