@@ -1,0 +1,24 @@
+name: Deployment preparation
+
+description: |
+    This action prepares the deployment by building and pushing the docker image.
+    It is used by the deployment action.
+
+inputs:
+    gitlab-username:
+        description: Gitlab username
+        required: true
+    gitlab-token:
+        description: Gitlab token
+        required: true
+
+runs:
+    using: composite
+    steps:
+        -   name: Login to GitLab
+            id: login-gitlab
+            uses: docker/login-action@v3
+            with:
+                registry: registry.gitlab.com
+                username: ${{ inputs.gitlab-username }}
+                password: ${{ inputs.gitlab-token }}
