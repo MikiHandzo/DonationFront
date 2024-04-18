@@ -51,8 +51,6 @@ export default function DonorsList({list}: Props) {
         }
     })
 
-    console.log(new Date(list[0].processed_at).toLocaleString('uk-UA'))
-
     return (
         <div className={styles.donors}>
             {list?.length ?
