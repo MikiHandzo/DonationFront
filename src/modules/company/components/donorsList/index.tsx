@@ -40,7 +40,7 @@ export default function DonorsList({list}: Props) {
                     <div className={styles.info}>
                         {hydrated && <p>{namesList[randomIndexName()]}</p>}
 
-                        <small>{item.processed_at}</small>
+                        <small>{new Date(item.processed_at)?.toLocaleString('uk-UA')}</small>
                     </div>
 
                     <div className={styles.sum}>
@@ -50,6 +50,8 @@ export default function DonorsList({list}: Props) {
             )
         }
     })
+
+    console.log(new Date(list[0].processed_at).toLocaleString('uk-UA'))
 
     return (
         <div className={styles.donors}>
