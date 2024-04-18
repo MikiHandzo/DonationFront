@@ -21,7 +21,7 @@ export default async function Company({id}: Props) {
                 </div>
 
                 <div className={styles.donation}>
-                    <DonationProgressBar target={companyInfo.target} current={11220} />
+                    <DonationProgressBar target={companyInfo.target || 0} current={companyInfo.collected_amount || 0} />
 
                     <Donation id={id} />
                 </div>
