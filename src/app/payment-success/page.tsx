@@ -1,13 +1,13 @@
 'use client'
 
+import React, {useState} from "react";
 import { useRouter } from 'next/navigation'
-import Image from "next/image";
 import Header from "@/modules/header";
 import Footer from "@/modules/footer";
 import Button from "@/UI/button";
-import styles from './styles.module.scss'
-import React, {useState} from "react";
 import Loader from "@/components/loader";
+import Image from "next/image";
+import styles from './styles.module.scss'
 
 export default function PaymentSuccessful() {
     const router = useRouter()
