@@ -1,11 +1,10 @@
 'use client'
 import React, { useCallback } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import {CompanyImages} from "@/types";
-import styles from './styles.module.scss'
 import Image from "next/image";
-
+import useEmblaCarousel from 'embla-carousel-react'
+import {CompanyImages} from "@/types";
+import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+import styles from './styles.module.scss'
 
 interface Props {
     items: CompanyImages[]
