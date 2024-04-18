@@ -1,9 +1,10 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
+import {Donors} from "@/types";
 
 interface Props {
-    list: { sum: number, time: string, id: string}[]
+    list: Array<Donors>
     itemsInPage: number;
     setCurrentIndex: Dispatch<SetStateAction<number[]>>;
 }

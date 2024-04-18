@@ -37,6 +37,7 @@ export default async function Company({id}: Props) {
                 <SocialShare />
 
                 <CompanyTabs
+                    donors={companyInfo.donors || []}
                     documents={companyInfo.documents}
                     reports={companyInfo.reports}
                 />

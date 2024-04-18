@@ -1,10 +1,11 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import Pagination from "@/modules/company/components/pagination";
+import {Donors} from "@/types";
 import styles from "./styles.module.scss";
 
 interface Props {
-    list: { sum: number, time: string, id: string}[]
+    list: Array<Donors>
 }
 export default function DonorsList({list}: Props) {
     const [hydrated, setHydrated] = useState(false);
@@ -31,7 +32,7 @@ export default function DonorsList({list}: Props) {
     const renderList = () => list.map((item, index) => {
         if(index >= currentIndex[0] && index < currentIndex[1]) {
             return (
-                <div key={item.id} className={styles.item}>
+                <div key={item.processed_at} className={styles.item}>
                     {hydrated && <div className={styles.preview}>
                         <Image src={`/icons/donationsUserList/${randomAvatar()}.svg`} alt='avatar' width={35} height={35}/>
                     </div>}
@@ -39,11 +40,11 @@ export default function DonorsList({list}: Props) {
                     <div className={styles.info}>
                         {hydrated && <p>{namesList[randomIndexName()]}</p>}
 
-                        <small>{item.time}</small>
+                        <small>{item.processed_at}</small>
                     </div>
 
                     <div className={styles.sum}>
-                        {item.sum} ₴
+                        {item.amount} ₴
                     </div>
                 </div>
             )

@@ -39,3 +39,8 @@ export interface CompanyReports {
     type: string,
     path: string,
 }
+
+export interface Donors {
+    amount: number,
+    processed_at: string,
+}
